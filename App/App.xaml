@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             x:Class="App.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#3275b9</Color>
+            <Color x:Key="Secondary">#92c64a</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!-- <x:String x:Key="menuIcon">&#xf0c9;</x:String> -->
+            <ControlTemplate x:Key="MainPageTemplate">
+
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Begin Header -->
+                    <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Spacing="0"
+            HeightRequest="60"
+            BackgroundColor="#2196F3"
+            Grid.Column="0" Grid.Row="0">
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
+                            iOS="10, 10, 10, 10"
+                            Android="10, 10, 10, 10"
+                            WinPhone="10, 10, 10, 10" />
+                        </StackLayout.Padding>
+                        <!-- header content -->
+                        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" VerticalOptions="FillAndExpand">
+                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.ChevronLeft}" FontFamily="FS" TextColor="white" FontSize="Large"></Label>
+                            <Label TextColor="White" FontSize="Large">Catalog</Label>
+                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.Bars}" FontFamily="FS" TextColor="White" FontSize="Large"></Label>
+                        </FlexLayout>
+                    </StackLayout>
+                    <!-- End Header -->
+
+                    <!-- Begin Content -->
+                    <ScrollView Grid.Column="0" Grid.Row="1">
+                        <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                    </ScrollView>
+                    <!-- End Content -->
+
+                    <FlexLayout Grid.Column="0" Grid.Row="2" BackgroundColor="white" JustifyContent="SpaceBetween" Padding="30, 10" AlignItems="Center">
+                        <StackLayout>
+                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.List}" FontFamily="FS" HorizontalTextAlignment="Center">
+                            </Label>
+                            <Label Text="Catalog"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.Receipt}" FontFamily="FS" HorizontalTextAlignment="Center">
+                            </Label>
+                            <Label Text="Order History"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.Percent}" FontFamily="FS" HorizontalTextAlignment="Center">
+                            </Label>
+                            <Label Text="Promotion"></Label>
+                        </StackLayout>
+                    </FlexLayout>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>
