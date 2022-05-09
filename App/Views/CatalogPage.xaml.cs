@@ -36,7 +36,7 @@ namespace App.Views
                 previous.Visible = false;
                 previous.RowHeight = 0;
                 previous.TextColor1 = Color.Black;
-                previous.TextColor2 = Color.DarkOrange;
+                previous.TextColor2 = Color.FromHex("#e76f3a");
             }
 
         }

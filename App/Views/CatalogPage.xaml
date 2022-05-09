@@ -48,7 +48,7 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10, 20, 10, 15" Style="{StaticResource stacklayoutStyle}" CornerRadius="10" HasShadow="False">
+                    <Frame Padding="10, 20, 10, 15" Style="{StaticResource stacklayoutStyle}" CornerRadius="10" HasShadow="True">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
