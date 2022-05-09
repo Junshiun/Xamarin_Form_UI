@@ -55,13 +55,13 @@
                                 <RowDefinition Height="{Binding RowHeight}"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.Column="0" Grid.Row="0" Source="{Binding ProductImage}" VerticalOptions="StartAndExpand" Margin="0, 0, 10, 0"></Image>
                             <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Vertical" Spacing="0">
-                                <Label Text="{Binding ItemText}" FontSize="17"  Margin="0, 0, 0, 10" TextColor="{Binding TextColor1}" LineHeight="1.1"></Label>
+                                <Label Text="{Binding ItemText}" FontSize="16"  Margin="0, 0, 0, 10" TextColor="{Binding TextColor1}" LineHeight="1.1"></Label>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="RM" TextColor="{Binding TextColor2}" FontAttributes="Bold"></Label>
                                     <Label Text="{Binding Price, StringFormat='{0:0.00}'}" TextColor="{Binding TextColor2}" FontAttributes="Bold"></Label>
