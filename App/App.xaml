@@ -30,7 +30,8 @@
                 </Setter>
             </Style>
 
-            <!-- <x:String x:Key="menuIcon">&#xf0c9;</x:String> -->
+            <!--
+            <!- - <x:String x:Key="menuIcon">&#xf0c9;</x:String> - ->
             <ControlTemplate x:Key="MainPageTemplate">
 
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
@@ -40,7 +41,7 @@
                         <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Begin Header -->
+                    <!- - Begin Header - ->
                     <StackLayout
             Orientation="Vertical"
             HorizontalOptions="FillAndExpand"
@@ -55,20 +56,20 @@
                             Android="10, 10, 10, 10"
                             WinPhone="10, 10, 10, 10" />
                         </StackLayout.Padding>
-                        <!-- header content -->
+                        <!- - header content - ->
                         <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" VerticalOptions="FillAndExpand">
                             <Label Text="{x:Static fontAwesome:FontAwesomeIcons.ChevronLeft}" FontFamily="FS" TextColor="white" FontSize="Large"></Label>
                             <Label TextColor="White" FontSize="Large">Catalog</Label>
                             <Label Text="{x:Static fontAwesome:FontAwesomeIcons.Bars}" FontFamily="FS" TextColor="White" FontSize="Large"></Label>
                         </FlexLayout>
                     </StackLayout>
-                    <!-- End Header -->
+                    <!- - End Header - ->
 
-                    <!-- Begin Content -->
+                    <!- - Begin Content - ->
                     <ScrollView Grid.Column="0" Grid.Row="1">
                         <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
                     </ScrollView>
-                    <!-- End Content -->
+                    <!- - End Content - ->
 
                     <FlexLayout Grid.Column="0" Grid.Row="2" BackgroundColor="white" JustifyContent="SpaceBetween" Padding="30, 10" AlignItems="Center">
                         <StackLayout>
@@ -89,6 +90,7 @@
                     </FlexLayout>
                 </Grid>
             </ControlTemplate>
+            -->
         </ResourceDictionary>        
     </Application.Resources>
 </Application>
