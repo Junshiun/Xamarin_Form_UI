@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>
 
     <Shell.TitleView>
-        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" VerticalOptions="FillAndExpand" Padding="10, 0, 10, 0">
+        <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" VerticalOptions="FillAndExpand" Padding="5, 0, 10, 0">
             <Label Text="{x:Static fontAwesome:FontAwesomeIcons.ChevronLeft}" FontFamily="FS" TextColor="white" FontSize="Large"></Label>
             <Label TextColor="White" FontSize="Large">Catalog</Label>
             <Label Text="{x:Static fontAwesome:FontAwesomeIcons.Bars}" FontFamily="FS" TextColor="White" FontSize="Large"></Label>
@@ -48,54 +48,58 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10, 10" Style="{StaticResource stacklayoutStyle}" CornerRadius="10" HasShadow="False">
+                    <Frame Padding="10, 20, 10, 15" Style="{StaticResource stacklayoutStyle}" CornerRadius="10" HasShadow="False">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="{Binding RowHeight}"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="120"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Source="{Binding ProductImage}" VerticalOptions="StartAndExpand" Margin="0, 0, 10, 0"></Image>
-                            <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="0">
-                                <Label Text="{Binding ItemText}" FontSize="Medium"  Margin="0, 0, 0, 10" TextColor="{Binding TextColor1}"></Label>
+                            <Image Grid.Column="0" Grid.Row="0" Source="{Binding ProductImage}" VerticalOptions="StartAndExpand" Margin="0, 0, 10, 0"></Image>
+                            <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Vertical" Spacing="0">
+                                <Label Text="{Binding ItemText}" FontSize="17"  Margin="0, 0, 0, 15" TextColor="{Binding TextColor1}" LineHeight="1.1"></Label>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="RM" TextColor="{Binding TextColor2}" FontAttributes="Bold"></Label>
-                                    <Label Text="{Binding Price}" TextColor="{Binding TextColor2}" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding Price, StringFormat='{0:0.00}'}" TextColor="{Binding TextColor2}" FontAttributes="Bold"></Label>
                                     <Label Text="/ item" TextColor="Gray"></Label>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="min" FontSize="10" TextColor="LightGray"></Label>
                                     <Label Text="{Binding Min}" FontSize="10" TextColor="LightGray"/>
-                                    <Label Text="order" FontSize="10" TextColor="LightGray"></Label>
+                                    <Label Text="orders" FontSize="10" TextColor="LightGray"></Label>
                                 </StackLayout>
-                                <FlexLayout JustifyContent="SpaceBetween" HeightRequest="35" AlignItems="Center" IsVisible="{Binding Visible}" Margin="0, 20, 0, 10">
-                                    <Frame Padding="0, 0" CornerRadius="50" HeightRequest="35" WidthRequest="100" HasShadow="False" BorderColor="{StaticResource Primary}" BackgroundColor="Transparent">
-                                        <FlexLayout WidthRequest="80" AlignItems="Center" JustifyContent="SpaceBetween">
-                                            <StackLayout Spacing="0" Orientation="Horizontal">
-                                                <Button Text="+" TextColor="{StaticResource Primary}" Command="{Binding Path=BindingContext.AddCommand, Source={x:Reference itemList}}" CommandParameter="{Binding .}" WidthRequest="30" HeightRequest="35" FontSize="20" BackgroundColor="Transparent" Padding="0, 0, 0, 0">
-                                                </Button>
-                                                <Rectangle Fill="Blue" Stroke="{StaticResource Primary}" WidthRequest="2" HeightRequest="25" VerticalOptions="Center"></Rectangle>
-                                            </StackLayout>
-                                            <Label VerticalOptions="Center" Text="{Binding Amount}" TextColor="{StaticResource Primary}" FontAttributes="Bold"></Label>
-                                            <StackLayout Spacing="0" Orientation="Horizontal">
-                                                <Rectangle Fill="Blue" Stroke="{StaticResource Primary}" WidthRequest="2" HeightRequest="25" VerticalOptions="Center"></Rectangle>
-                                                <Button Text="-" TextColor="{StaticResource Primary}" Command="{Binding Path=BindingContext.MinusCommand, Source={x:Reference itemList}}" CommandParameter="{Binding .}" WidthRequest="30" HeightRequest="35" FontSize="20" BackgroundColor="Transparent" Padding="0, 0, 0, 0">
-                                                </Button>
-                                            </StackLayout>
-                                        </FlexLayout>
-                                    </Frame>
-
-                                    <Frame Padding="10, 0" HasShadow="False" CornerRadius="50" BackgroundColor="{StaticResource Primary}">
-                                        <FlexLayout AlignItems="Center" WidthRequest="100">
-                                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.CartShopping}" FontFamily="FS" TextColor="white" Margin="0, 0, 10, 0"></Label>
-                                            <Label Text="Add To Cart" TextColor="white"/>
-                                        </FlexLayout>
-                                    </Frame>
-                                </FlexLayout>
                             </StackLayout>
+                            <FlexLayout Grid.Column="1" Grid.Row="1" JustifyContent="SpaceBetween" AlignItems="Center" IsVisible="{Binding Visible}" Margin="0, 20, 0, 10" VerticalOptions="Start">
+                                <Frame Padding="0, 0" CornerRadius="50" HeightRequest="35" WidthRequest="100" HasShadow="False" BorderColor="{StaticResource Primary}" BackgroundColor="Transparent">
+                                    <FlexLayout WidthRequest="80" AlignItems="Center" JustifyContent="SpaceBetween">
+                                        <StackLayout Spacing="0" Orientation="Horizontal">
+                                            <Button Text="+" TextColor="{StaticResource Primary}" Command="{Binding Path=BindingContext.AddCommand, Source={x:Reference itemList}}" CommandParameter="{Binding .}" WidthRequest="30" HeightRequest="35" FontSize="20" BackgroundColor="Transparent" Padding="0, 0, 0, 0">
+                                            </Button>
+                                            <StackLayout WidthRequest="1" HeightRequest="25" Orientation="Horizontal">
+                                                <!-- fix unknown shadow -->
+                                                <Label BackgroundColor="{StaticResource Primary}" WidthRequest="1" HeightRequest="25" VerticalOptions="Center"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Label VerticalOptions="Center" Text="{Binding Amount}" TextColor="{StaticResource Primary}" FontAttributes="Bold"></Label>
+                                        <StackLayout Spacing="0" Orientation="Horizontal">
+                                            <Label BackgroundColor="{StaticResource Primary}" WidthRequest="1" HeightRequest="25" VerticalOptions="Center"></Label>
+                                            <Button Text="-" TextColor="{StaticResource Primary}" Command="{Binding Path=BindingContext.MinusCommand, Source={x:Reference itemList}}" CommandParameter="{Binding .}" WidthRequest="30" HeightRequest="35" FontSize="20" BackgroundColor="Transparent" Padding="0, 0, 0, 0">
+                                            </Button>
+                                        </StackLayout>
+                                    </FlexLayout>
+                                </Frame>
+
+                                <Frame Padding="10, 0" HasShadow="False" CornerRadius="50" BackgroundColor="{StaticResource Primary}">
+                                    <FlexLayout AlignItems="Center" WidthRequest="100" HeightRequest="35">
+                                        <Label Text="{x:Static fontAwesome:FontAwesomeIcons.CartShopping}" FontFamily="FS" TextColor="white" Margin="0, 0, 10, 0"></Label>
+                                        <Label Text="Add To Cart" TextColor="white"/>
+                                    </FlexLayout>
+                                </Frame>
+                            </FlexLayout>
                         </Grid>
                         <!--<FlexLayout>
                                 <Image Source="{Binding ProductImage}" HeightRequest="150" ></Image>

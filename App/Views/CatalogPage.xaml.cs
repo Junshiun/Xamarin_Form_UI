@@ -26,6 +26,7 @@ namespace App.Views
             ItemModel current = e.CurrentSelection.FirstOrDefault() as ItemModel;
 
             current.Visible = true;
+            current.RowHeight = 45;
             current.TextColor1 = Color.White;
             current.TextColor2 = Color.White;
 
@@ -33,8 +34,9 @@ namespace App.Views
             {
                 //Reset the previous to defaulr color
                 previous.Visible = false;
+                previous.RowHeight = 0;
                 previous.TextColor1 = Color.Black;
-                previous.TextColor2 = Color.Orange;
+                previous.TextColor2 = Color.DarkOrange;
             }
 
         }

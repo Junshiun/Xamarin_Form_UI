@@ -11,6 +11,7 @@ namespace App.Models
     {
         int amount;
         bool visible;
+        int rowHeight;
         Color textColor1;
         Color textColor2;
 
@@ -21,7 +22,7 @@ namespace App.Models
 
         public Uri ProductImage { get; set; }
 
-        public ItemModel(string ItemText, double Price, int Amount, int Min, Uri ProductImage, bool Visible, Color TextColor1, Color TextColor2)
+        public ItemModel(string ItemText, double Price, int Amount, int Min, Uri ProductImage, bool Visible, int RowHeight, Color TextColor1, Color TextColor2)
         {
             this.ItemText = ItemText;
             this.Price = Price;
@@ -29,6 +30,7 @@ namespace App.Models
             this.Min = Min;
             this.ProductImage = ProductImage;
             this.Visible = Visible;
+            this.RowHeight = RowHeight;
             this.TextColor1 = TextColor1;
             this.TextColor2 = TextColor2;
         }
@@ -70,6 +72,26 @@ namespace App.Models
             get
             {
                 return visible;
+            }
+        }
+
+        public int RowHeight
+        {
+            set
+            {
+                if (rowHeight != value)
+                {
+                    rowHeight = value;
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("RowHeight"));
+                    }
+                }
+            }
+            get
+            {
+                return rowHeight;
             }
         }
 
